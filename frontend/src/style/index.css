@@ -1,11 +1,47 @@
-.rating span{
-    margin: 0.1rem;
+.rating span {
+  margin: 0.1rem;
 }
-.rating svg{
-    color: #f8e825;
+.rating svg {
+  color: #f8e825;
 }
-.rating-text{
-    font-size: 0.9rem;
-    font-weight: 600;
-    padding-left: 0.5rem;
+.rating-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding-left: 0.5rem;
+}
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 150px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.top_caption {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.carousel-item-custom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
 }
