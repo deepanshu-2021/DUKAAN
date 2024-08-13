@@ -11,7 +11,7 @@ const app = express();
 dotenv.config();
 app.use(
   cors({
-    origin: "https://dukaanshop.netlify.app",
+    origin: "https://dukaan-xi.vercel.app",
   })
 );
 //cookie parser
