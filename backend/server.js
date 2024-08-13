@@ -19,19 +19,15 @@ connectDB();
 app.use("/api/products", productRouter);
 app.use("/api/user", userRouter);
 app.use("/api/orders", orderRouter);
-app.get("/", (req, res) => {
-  res.send("hi mom");
-});
 const _dirname = path.resolve();
 if (process.env.NODE_ENV === "production") {
-  console.log(process.env.NODE_ENV);
   app.use(express.static(path.join(_dirname + "/frontend/build")));
   //any route that is not presetn will go to index.html
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(_dirname, "frontend", "build", "index.html"));
   });
 } else {
-  app.get("/", (req, res) => {
+  app.get("*", (req, res) => {
     res.send("hi mom");
   });
 }
