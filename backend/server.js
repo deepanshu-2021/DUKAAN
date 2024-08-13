@@ -6,9 +6,14 @@ import { erorrHandler, notFound } from "./middleware/errorMiddleware.js";
 import userRouter from "./Routes/userRoute.js";
 import cookieParser from "cookie-parser";
 import { orderRouter } from "./Routes/orderRoute.js";
-import path from "path";
+import cors from "cors";
 const app = express();
 dotenv.config();
+app.use(
+  cors({
+    origin: "https://dukaanshop.netlify.app",
+  })
+);
 //cookie parser
 app.use(cookieParser());
 //body parser middleware
