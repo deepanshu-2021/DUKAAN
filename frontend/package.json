@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "postinstall": "npm install --prefix frontend"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
