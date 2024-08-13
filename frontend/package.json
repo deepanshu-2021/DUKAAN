@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "prebuild": "npm install --production",
+    "build": "npm run prebuild && vite build",
     "serve": "vite preview"
   },
   "dependencies": {
