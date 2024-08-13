@@ -24,6 +24,7 @@ app.get("/", (req, res) => {
 });
 const _dirname = path.resolve();
 if (process.env.NODE_ENV === "production") {
+  console.log(process.env.NODE_ENV);
   app.use(express.static(path.join(_dirname + "/frontend/build")));
   //any route that is not presetn will go to index.html
   app.get("*", (req, res) => {
