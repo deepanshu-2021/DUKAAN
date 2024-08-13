@@ -1,7 +1,9 @@
 [build]
-  base = "frontend"
-  publish = "frontend/dist"
-  command = "npm run build"
+  publish = "frontend/dist"   # Path to the directory containing your built assets
+  command = "npm run build"   # Command to build your site, adjust if needed
 
-[context.production.environment]
-  NODE_ENV = "production"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
