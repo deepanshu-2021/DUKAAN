@@ -1,9 +1,10 @@
 [build]
-  publish = "frontend/dist"   # Path to the directory containing your built assets
-  command = "npm run build"   # Command to build your site, adjust if needed
+base = "frontend"
+command = "npm run build"
+publish = "dist"
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = true
+from = "/*"
+to = "/index.html"
+status = 200
+force = true
