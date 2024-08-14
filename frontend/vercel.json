@@ -18,5 +18,14 @@
       "src": "/(.*)",
       "dest": "/frontend/dist/$1"
     }
-  ]
+  ],
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://dukaan-qcwm.onrender.com/api/:path*"
+    }
+  ],
+  "env": {
+    "VITE_API_URL": "https://dukaan-qcwm.onrender.com"
+  }
 }
