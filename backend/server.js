@@ -11,7 +11,7 @@ const app = express();
 dotenv.config();
 app.use(
   cors({
-    origin: "https://dukaan-red.vercel.app",
+    origin: "https://dukaan-1.onrender.com",
     credentials: true,
   })
 );
