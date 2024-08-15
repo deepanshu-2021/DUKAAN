@@ -9,11 +9,13 @@ import { toast, ToastContainer } from "react-toastify";
 import Meta from "../components/meta";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+
 const ProductEditScreen = () => {
   const { id } = useParams();
   const { data, isLoading, error } = useGetProductDeatilsQuery(id);
   const navigate = useNavigate();
   const [updateProduct] = useUpdateProductMutation();
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
@@ -21,7 +23,7 @@ const ProductEditScreen = () => {
   const [price, setPrice] = useState(0);
   const [category, setCategory] = useState("");
   const [image, setImage] = useState(null);
-  const setData = () => {
+  useEffect(() => {
     if (data) {
       setName(data.name || "");
       setDescription(data.description || "");
@@ -29,12 +31,9 @@ const ProductEditScreen = () => {
       setCountInStock(data.countInStock || 0);
       setPrice(data.price || 0);
       setCategory(data.category || "");
-      setImage(null);
     }
-  };
-  useEffect(() => {
-    setData();
-  }, []);
+  }, [data]);
+
   const submitHandler = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -54,16 +53,17 @@ const ProductEditScreen = () => {
         navigate("/admin/products");
       }, 2000);
     } catch (err) {
-      toast.error("unable to update!!", err.message);
+      toast.error("Unable to update!!", err.message);
     }
   };
+
   return isLoading ? (
     <Loader />
   ) : error ? (
-    <Message varient="danger" children={error.message} />
+    <Message variant="danger" children={error.message} />
   ) : (
     <Container className="mt-5">
-      <Meta title="productedit" />
+      <Meta title="Product Edit" />
       <h2>Edit Product</h2>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="name">
