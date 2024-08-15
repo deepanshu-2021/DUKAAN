@@ -21,7 +21,7 @@ const ProductEditScreen = () => {
   const [price, setPrice] = useState(0);
   const [category, setCategory] = useState("");
   const [image, setImage] = useState(null);
-  useEffect(() => {
+  const setData = () => {
     if (data) {
       setName(data.name || "");
       setDescription(data.description || "");
@@ -31,7 +31,7 @@ const ProductEditScreen = () => {
       setCategory(data.category || "");
       setImage(null);
     }
-  }, [data]);
+  };
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -61,6 +61,7 @@ const ProductEditScreen = () => {
     <Message varient="danger" children={error.message} />
   ) : (
     <Container className="mt-5">
+      {setData()}
       <Meta title="productedit" />
       <h2>Edit Product</h2>
       <Form onSubmit={submitHandler}>
