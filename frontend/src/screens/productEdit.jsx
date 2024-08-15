@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import {
@@ -32,7 +32,9 @@ const ProductEditScreen = () => {
       setImage(null);
     }
   };
-
+  useEffect(() => {
+    setData();
+  }, []);
   const submitHandler = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -61,7 +63,6 @@ const ProductEditScreen = () => {
     <Message varient="danger" children={error.message} />
   ) : (
     <Container className="mt-5">
-      {setData()}
       <Meta title="productedit" />
       <h2>Edit Product</h2>
       <Form onSubmit={submitHandler}>
