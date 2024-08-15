@@ -9,7 +9,6 @@ import { toast, ToastContainer } from "react-toastify";
 import Meta from "../components/meta";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-
 const ProductEditScreen = () => {
   const { id } = useParams();
   const { data, isLoading, error } = useGetProductDeatilsQuery(id);
@@ -60,7 +59,7 @@ const ProductEditScreen = () => {
           <Form.Control
             type="text"
             placeholder="Enter name"
-            value={data.name}
+            value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </Form.Group>
@@ -70,7 +69,7 @@ const ProductEditScreen = () => {
           <Form.Control
             type="text"
             placeholder="Enter description"
-            value={data.description}
+            value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </Form.Group>
@@ -80,7 +79,7 @@ const ProductEditScreen = () => {
           <Form.Control
             type="text"
             placeholder="Enter brand"
-            value={data.brand}
+            value={brand}
             onChange={(e) => setBrand(e.target.value)}
           />
         </Form.Group>
@@ -90,7 +89,7 @@ const ProductEditScreen = () => {
           <Form.Control
             type="number"
             placeholder="Enter count in stock"
-            value={data.countInStock}
+            value={countInStock}
             onChange={(e) => setCountInStock(Number(e.target.value))}
           />
         </Form.Group>
@@ -100,7 +99,7 @@ const ProductEditScreen = () => {
           <Form.Control
             type="number"
             placeholder="Enter price"
-            value={data.price}
+            value={price}
             onChange={(e) => setPrice(Number(e.target.value))}
           />
         </Form.Group>
@@ -110,7 +109,7 @@ const ProductEditScreen = () => {
           <Form.Control
             type="text"
             placeholder="Enter category"
-            value={data.category}
+            value={category}
             onChange={(e) => setCategory(e.target.value)}
           />
         </Form.Group>
