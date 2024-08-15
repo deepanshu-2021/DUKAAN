@@ -1,20 +1,26 @@
 import React, { useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import { useUpdateProductMutation } from "../slices/productSlice";
+import {
+  useUpdateProductMutation,
+  useGetProductDeatilsQuery,
+} from "../slices/productSlice";
 import { toast, ToastContainer } from "react-toastify";
 import Meta from "../components/meta";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 const ProductEditScreen = () => {
   const { id } = useParams();
+  const { data, isLoading, error } = useGetProductDeatilsQuery(id);
   const navigate = useNavigate();
   const [updateProduct] = useUpdateProductMutation();
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [brand, setBrand] = useState("");
-  const [countInStock, setCountInStock] = useState(0);
-  const [price, setPrice] = useState(0);
-  const [category, setCategory] = useState("");
+  const [name, setName] = useState(data.name);
+  const [description, setDescription] = useState(data.description);
+  const [brand, setBrand] = useState(data.brand);
+  const [countInStock, setCountInStock] = useState(data.countInStock);
+  const [price, setPrice] = useState(data.price);
+  const [category, setCategory] = useState(data.category);
   const [image, setImage] = useState(null);
 
   const submitHandler = async (e) => {
@@ -30,7 +36,6 @@ const ProductEditScreen = () => {
     formData.append("image", image);
 
     try {
-      console.log(formData.get(id));
       await updateProduct(formData).unwrap();
       toast.success("Product edited successfully");
       setTimeout(() => {
@@ -41,7 +46,11 @@ const ProductEditScreen = () => {
     }
   };
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : error ? (
+    <Message varient="danger" children={error.message} />
+  ) : (
     <Container className="mt-5">
       <Meta title="productedit" />
       <h2>Edit Product</h2>
