@@ -16,7 +16,7 @@ import {
 import { useParams } from "react-router-dom";
 import Meta from "../components/meta";
 const AdminProductListScreen = () => {
-  const { pageNumber } = useParams();
+  const { pageNumber } = useParams() || 1;
   const { data, refetch, isLoading, error } = useGetProductsQuery({
     pageNumber,
   });
