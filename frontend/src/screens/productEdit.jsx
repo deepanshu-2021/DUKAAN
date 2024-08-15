@@ -21,6 +21,17 @@ const ProductEditScreen = () => {
   const [price, setPrice] = useState(0);
   const [category, setCategory] = useState("");
   const [image, setImage] = useState(null);
+  useEffect(() => {
+    if (data) {
+      setName(data.name || "");
+      setDescription(data.description || "");
+      setBrand(data.brand || "");
+      setCountInStock(data.countInStock || 0);
+      setPrice(data.price || 0);
+      setCategory(data.category || "");
+      setImage(null);
+    }
+  }, [data]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -44,7 +55,6 @@ const ProductEditScreen = () => {
       toast.error("unable to update!!", err.message);
     }
   };
-
   return isLoading ? (
     <Loader />
   ) : error ? (
