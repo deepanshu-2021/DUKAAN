@@ -12,7 +12,7 @@ const erorrHandler = (err, req, res, next) => {
   }
   res.status(statusCode).json({
     message,
-    stack: process.env.NODE_ENV === "development" ? err.stack : NULL,
+    stack: process.env.NODE_ENV === "development" ? err.stack : null,
   });
 };
 export { notFound, erorrHandler };
