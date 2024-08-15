@@ -15,12 +15,12 @@ const ProductEditScreen = () => {
   const { data, isLoading, error } = useGetProductDeatilsQuery(id);
   const navigate = useNavigate();
   const [updateProduct] = useUpdateProductMutation();
-  const [name, setName] = useState(data.name);
-  const [description, setDescription] = useState(data.description);
-  const [brand, setBrand] = useState(data.brand);
-  const [countInStock, setCountInStock] = useState(data.countInStock);
-  const [price, setPrice] = useState(data.price);
-  const [category, setCategory] = useState(data.category);
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [brand, setBrand] = useState("");
+  const [countInStock, setCountInStock] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [category, setCategory] = useState("");
   const [image, setImage] = useState(null);
 
   const submitHandler = async (e) => {
@@ -60,7 +60,7 @@ const ProductEditScreen = () => {
           <Form.Control
             type="text"
             placeholder="Enter name"
-            value={name}
+            value={data.name}
             onChange={(e) => setName(e.target.value)}
           />
         </Form.Group>
@@ -70,7 +70,7 @@ const ProductEditScreen = () => {
           <Form.Control
             type="text"
             placeholder="Enter description"
-            value={description}
+            value={data.description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </Form.Group>
@@ -80,7 +80,7 @@ const ProductEditScreen = () => {
           <Form.Control
             type="text"
             placeholder="Enter brand"
-            value={brand}
+            value={data.brand}
             onChange={(e) => setBrand(e.target.value)}
           />
         </Form.Group>
@@ -90,7 +90,7 @@ const ProductEditScreen = () => {
           <Form.Control
             type="number"
             placeholder="Enter count in stock"
-            value={countInStock}
+            value={data.countInStock}
             onChange={(e) => setCountInStock(Number(e.target.value))}
           />
         </Form.Group>
@@ -100,7 +100,7 @@ const ProductEditScreen = () => {
           <Form.Control
             type="number"
             placeholder="Enter price"
-            value={price}
+            value={data.price}
             onChange={(e) => setPrice(Number(e.target.value))}
           />
         </Form.Group>
@@ -110,7 +110,7 @@ const ProductEditScreen = () => {
           <Form.Control
             type="text"
             placeholder="Enter category"
-            value={category}
+            value={data.category}
             onChange={(e) => setCategory(e.target.value)}
           />
         </Form.Group>
