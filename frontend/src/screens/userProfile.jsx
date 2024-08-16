@@ -109,45 +109,47 @@ const UserProfile = () => {
           ) : (
             <div>
               <h2 className="text-center">Order History</h2>
-              <Table striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Method</th>
-                    <th>Total</th>
-                    <th>Delivered</th>
-                    <th>Paid</th>
-                    <th>Date</th>
-                    <th>View</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {orders.map((order) => (
-                    <tr key={order._id}>
-                      <td>{order._id}</td>
-                      <td>{order.paymentMethod}</td>
-                      <td>{order.totalPrice}</td>
-                      <td className="flex text-center">
-                        {order.isDelivered ? <SiTicktick /> : <ImCross />}
-                      </td>
-                      <td className="flex text-center">
-                        {order.isPaid ? <SiTicktick /> : <ImCross />}
-                      </td>
-                      <td>{order.createdAt.slice(0, 10)}</td>
-                      <td>
-                        <Button
-                          variant="light"
-                          onClick={() => {
-                            navigate(`/order/${order._id}`);
-                          }}
-                        >
-                          Details
-                        </Button>
-                      </td>
+              <div className="table-responsive">
+                <Table striped bordered hover>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Method</th>
+                      <th>Total</th>
+                      <th>Delivered</th>
+                      <th>Paid</th>
+                      <th>Date</th>
+                      <th>View</th>
                     </tr>
-                  ))}
-                </tbody>
-              </Table>
+                  </thead>
+                  <tbody>
+                    {orders.map((order) => (
+                      <tr key={order._id}>
+                        <td>{order._id}</td>
+                        <td>{order.paymentMethod}</td>
+                        <td>{order.totalPrice}</td>
+                        <td className="flex text-center">
+                          {order.isDelivered ? <SiTicktick /> : <ImCross />}
+                        </td>
+                        <td className="flex text-center">
+                          {order.isPaid ? <SiTicktick /> : <ImCross />}
+                        </td>
+                        <td>{order.createdAt.slice(0, 10)}</td>
+                        <td>
+                          <Button
+                            variant="light"
+                            onClick={() => {
+                              navigate(`/order/${order._id}`);
+                            }}
+                          >
+                            Details
+                          </Button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              </div>
             </div>
           )}
         </Col>
