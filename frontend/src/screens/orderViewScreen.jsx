@@ -92,7 +92,7 @@ const OrderViewScreen = () => {
                       updatetoDelivered();
                     }}
                   >
-                    click to change to delivered
+                    change to delivered
                   </Button>
                 </>
               ) : (
@@ -135,13 +135,15 @@ const OrderViewScreen = () => {
               ) : (
                 <>
                   <Message varient="danger" children="Not Paid" />
-                  <Button
-                    onClick={() => {
-                      updatetoPaid();
-                    }}
-                  >
-                    click to change to delivered
-                  </Button>
+                  {userInfo.isAdmin && (
+                    <Button
+                      onClick={() => {
+                        updatetoPaid();
+                      }}
+                    >
+                      change to paid
+                    </Button>
+                  )}
                 </>
               )}
             </ListGroup.Item>
