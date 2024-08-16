@@ -22,9 +22,7 @@ const Header = () => {
     <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
       <Container>
         <LinkContainer to="/">
-          <Navbar.Brand className="h-25 w-25">
-            <img src="https://res.cloudinary.com/deepanshubaluni/image/upload/v1723784944/deddc367-4266-416b-af28-c92950d37385_jieqd9.jpg" />
-          </Navbar.Brand>
+          <Navbar.Brand>DUKAAN</Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
