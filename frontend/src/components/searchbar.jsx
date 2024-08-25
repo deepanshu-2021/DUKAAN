@@ -20,13 +20,13 @@ const Searchbar = () => {
         type="text"
         name="q"
         placeholder="Search products..."
-        className="mr-sm-2 ml-sm-5"
+        className="mr-sm-2 ml-sm-5 my-2"
         onChange={(e) => {
           setKeyword(e.target.value);
         }}
         value={keyword}
       ></Form.Control>
-      <Button type="submit" variant="outline-success" className="p-2 mx-2">
+      <Button type="submit" variant="outline-success" className="p-2 mx-2 my-2">
         search
       </Button>
     </Form>

@@ -15,7 +15,7 @@ const HomeScreen = () => {
   });
   return (
     <>
-      <Meta title={keyword || "dukkan"} />
+      <Meta title={keyword || "dukaan"} />
       {isLoading ? (
         <Loader />
       ) : error ? (
