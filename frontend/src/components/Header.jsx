@@ -22,14 +22,14 @@ const Header = () => {
     <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
       <Container>
         <LinkContainer to="/">
-          <Navbar.Brand>DUKAAN</Navbar.Brand>
+          <Navbar.Brand className="fs-4">DUKAAN</Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Searchbar />
             <LinkContainer to="/cart">
-              <Nav.Link href="/cart" className="fs-3">
+              <Nav.Link href="/cart" className="fs-4">
                 <FaShoppingCart /> Cart
                 {cartItems.length > 0 && (
                   <Badge pill bg="success" style={{ marginLeft: "5px" }}>
@@ -40,7 +40,7 @@ const Header = () => {
             </LinkContainer>
             {userInfo ? (
               <NavDropdown
-                className="fs-3"
+                className="fs-4"
                 title={userInfo.name}
                 id="nav-dropdown"
               >
@@ -59,7 +59,7 @@ const Header = () => {
               </LinkContainer>
             )}
             {userInfo && userInfo.isAdmin && (
-              <NavDropdown className="fs-3" title="Admin" id="nav-dropdown">
+              <NavDropdown className="fs-4" title="Admin" id="nav-dropdown">
                 <LinkContainer className="fs-4" to="/admin/orders">
                   <NavDropdown.Item className="fs-4">orders</NavDropdown.Item>
                 </LinkContainer>
