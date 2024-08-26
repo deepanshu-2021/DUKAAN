@@ -22,6 +22,8 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+  padding-top: 20px;
+  height: 80px;
 }
 .top_caption {
   background-color: rgba(0, 0, 0, 0.5);

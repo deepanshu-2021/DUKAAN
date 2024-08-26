@@ -4,10 +4,13 @@ import "../style/index.css";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="bg-black" style={{ paddingTop: "300px" }}>
+    <footer
+      className="bg-black fs-6"
+      style={{ marginTop: "80px", padding: "auto" }}
+    >
       <Container>
         <Row>
-          <Col className="text-center fs-4 text-light   py-5">{`DUKAAN@${currentYear}`}</Col>
+          <Col className="text-center fs-5 text-light m-auto ">{`DUKAAN@${currentYear}`}</Col>
         </Row>
       </Container>
     </footer>

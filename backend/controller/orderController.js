@@ -1,6 +1,7 @@
 import asyncHandler from "../middleware/asyncHandler.js";
 import Order from "../model/orderModel.js";
 import uploadToCloudinary from "../middleware/cloudinary.js";
+import Product from "../model/productModel.js";
 const addOrder = asyncHandler(async (req, res, next) => {
   const {
     orderItems,
@@ -88,6 +89,14 @@ const updateOrderToDelivered = asyncHandler(async (req, res, next) => {
     { isDelivered: true }
   );
   if (order) {
+    if (order.paymentMethod === "CashOnDelivery") {
+      const items = order.orderItems;
+      for (const item of items) {
+        await Product.findByIdAndUpdate(item.product._id, {
+          $inc: { countInStock: -item.qty },
+        });
+      }
+    }
     res.status(204).json("successfully updated!");
   } else {
     res.status(404);
@@ -101,6 +110,12 @@ const updateOrderToVerified = asyncHandler(async (req, res, next) => {
     { isVerified: true }
   );
   if (order) {
+    const items = order.orderItems;
+    for (const item of items) {
+      await Product.findByIdAndUpdate(item.product._id, {
+        $inc: { countInStock: -item.qty },
+      });
+    }
     res.status(204).json("successfully updated!");
   } else {
     res.status(404);
