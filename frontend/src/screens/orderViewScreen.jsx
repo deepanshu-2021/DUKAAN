@@ -103,7 +103,7 @@ const OrderViewScreen = () => {
               {order.isVerified ? (
                 <Message varient="success" children="Verified" />
               ) : (
-                order.isPaid &&
+                order.paymentMethod === "QRCode" &&
                 userInfo.isAdmin && (
                   <>
                     <Message varient="danger" children="Not Verifed" />
