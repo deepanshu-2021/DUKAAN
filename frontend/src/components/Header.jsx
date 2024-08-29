@@ -53,7 +53,7 @@ const Header = () => {
               </NavDropdown>
             ) : (
               <LinkContainer to="/login">
-                <Nav.Link href="/login" className="fs-3">
+                <Nav.Link href="/login" className="fs-4">
                   <FaUser /> Sign-In
                 </Nav.Link>
               </LinkContainer>
