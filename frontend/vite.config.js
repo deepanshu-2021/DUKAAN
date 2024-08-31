@@ -7,7 +7,8 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://dukaan-qcwm.onrender.com/api/",
+        // target: "https://dukaan-qcwm.onrender.com/api/",
+        target: "http://localhost:5000/api/",
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ""),

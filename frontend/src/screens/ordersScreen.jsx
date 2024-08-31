@@ -3,14 +3,35 @@ import { Container, Col, Button, Table, Row } from "react-bootstrap";
 import Loader from "../components/Loader";
 import { SiTicktick } from "react-icons/si";
 import Message from "../components/Message";
+import { MdDelete } from "react-icons/md";
 import { ImCross } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
-import { useGetAllOrdersQuery } from "../slices/orderSlice";
+import {
+  useGetAllOrdersQuery,
+  useDeleteOrderMutation,
+} from "../slices/orderSlice";
 import Meta from "../components/meta";
+import { toast, ToastContainer } from "react-toastify";
 
 const OrdersScreen = () => {
   const navigate = useNavigate();
-  const { data: orders, isLoading, isError, error } = useGetAllOrdersQuery();
+  const {
+    data: orders,
+    isLoading,
+    refetch,
+    isError,
+    error,
+  } = useGetAllOrdersQuery();
+  const [deleteOrder] = useDeleteOrderMutation();
+  const deleteHandler = async (id) => {
+    try {
+      await deleteOrder(id);
+      toast.success("deleted successfully!");
+      refetch();
+    } catch (eror) {
+      toast.error("unable to delete!!");
+    }
+  };
   return (
     <Container>
       <Meta title="orders" />
@@ -33,6 +54,7 @@ const OrdersScreen = () => {
                     <th>Paid</th>
                     <th>Date</th>
                     <th>View</th>
+                    <th>Delete</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -58,6 +80,15 @@ const OrdersScreen = () => {
                           Details
                         </Button>
                       </td>
+                      <td>
+                        <Button
+                          variant="danger"
+                          className="btn-sm mx-1"
+                          onClick={() => deleteHandler(order._id)}
+                        >
+                          <MdDelete />
+                        </Button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -66,6 +97,7 @@ const OrdersScreen = () => {
           )}
         </Col>
       </Row>
+      <ToastContainer />
     </Container>
   );
 };

@@ -8,12 +8,13 @@ import {
   updateOrderToPaid,
   getOrders,
   updateOrderToVerified,
+  deleteOrder,
 } from "../controller/orderController.js";
 import { upload } from "../middleware/multerMiddleware.js";
 const orderRouter = express.Router();
 orderRouter.route("/").get(protect, admin, getOrders);
 orderRouter.route("/mine").get(protect, getUserOrder).post(protect, addOrder);
-orderRouter.route("/:id").get(protect, getOrderById);
+orderRouter.route("/:id").get(protect, getOrderById).delete(deleteOrder);
 orderRouter
   .route("/:id/paid")
   .put(protect, upload.single("image"), updateOrderToPaid);

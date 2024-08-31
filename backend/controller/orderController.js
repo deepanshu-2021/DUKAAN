@@ -122,6 +122,16 @@ const updateOrderToVerified = asyncHandler(async (req, res, next) => {
     throw new Error("order not found!!");
   }
 });
+const deleteOrder = asyncHandler(async (req, res) => {
+  const id = req.params.id;
+  const order = await Order.findByIdAndDelete(id);
+  if (order) {
+    res.status(200).json("successfully delteted!!!");
+  } else {
+    res.status(404);
+    throw new Error("order not found!!");
+  }
+});
 export {
   addOrder,
   getOrderById,
@@ -130,4 +140,5 @@ export {
   updateOrderToPaid,
   updateOrderToVerified,
   getOrders,
+  deleteOrder,
 };
