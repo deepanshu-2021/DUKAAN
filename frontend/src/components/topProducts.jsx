@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 
 const TopProducts = () => {
   const { data: products, isLoading, error } = useGetTopProductsQuery();
-  console.log(products);
   if (isLoading) return <Loader />;
   if (error)
     return <Message variant="danger" children={error.message}></Message>;
@@ -24,7 +23,9 @@ const TopProducts = () => {
               />
             </div>
             <Carousel.Caption className="top_caption">
-              <h3>{product.name}</h3>
+              <h3>
+                <Link to={`/product/${product._id}`}>{product.name}</Link>
+              </h3>
             </Carousel.Caption>
           </Carousel.Item>
         ))}
