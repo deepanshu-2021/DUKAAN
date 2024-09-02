@@ -14,20 +14,20 @@ const TopProducts = () => {
     <Carousel pause={"hover"} className="bg-secondary mt-3 p-2 mb-4">
       {products &&
         products.map((product) => (
-          <Link to={`/product/${product._id}`}>
-            <Carousel.Item key={product._id} className="carousel-item-custom">
-              <div className="image-container">
-                <img
-                  className="d-block h-50 w-50"
-                  src={product.image}
-                  alt={product.name}
-                />
-              </div>
-              <Carousel.Caption className="top_caption">
-                <h3>{product.name}</h3>
-              </Carousel.Caption>
-            </Carousel.Item>
-          </Link>
+          <Carousel.Item key={product._id} className="carousel-item-custom">
+            <div className="image-container">
+              <img
+                className="d-block h-50 w-50"
+                src={product.image}
+                alt={product.name}
+              />
+            </div>
+            <Carousel.Caption className="top_caption">
+              <h3>
+                <Link to={`/product/${product._id}`}>{product.name}</Link>
+              </h3>
+            </Carousel.Caption>
+          </Carousel.Item>
         ))}
     </Carousel>
   );
