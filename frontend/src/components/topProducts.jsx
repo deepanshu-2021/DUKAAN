@@ -14,7 +14,7 @@ const TopProducts = () => {
     <Carousel pause={"hover"} className="bg-secondary mt-3 p-2 mb-4">
       {products &&
         products.map((product) => (
-          <Link>
+          <Link to={`/product/${product._id}`}>
             <Carousel.Item key={product._id} className="carousel-item-custom">
               <div className="image-container">
                 <img
